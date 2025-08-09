@@ -18,7 +18,7 @@ const app = express();
 const __dirname = path.resolve();
 const PORT = process.env.PORT;
 
-// to prase req.body
+// to parse req.body
 app.use(express.json())
 app.use(clerkMiddleware()); // adds auth to req object => req.auth
 app.use(fileUpload({
@@ -39,8 +39,8 @@ app.use("/api/songs", songRoutes)
 app.use("/api/albums", albumRoutes)
 app.use("/api/stats", statRoutes)
 
-
-
+// error handler
+app.use(err, req, res, next)
 
 app.listen(PORT, ()=> {
     console.log("server is running on port " + PORT);
