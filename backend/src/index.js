@@ -17,7 +17,6 @@ dotenv.config();
 const app = express();
 const __dirname = path.resolve();
 const PORT = process.env.PORT;
-console.log(PORT)
 
 // to parse req.body, utility middleware (universal and is applied to every single incoming request)
 app.use(express.json());
