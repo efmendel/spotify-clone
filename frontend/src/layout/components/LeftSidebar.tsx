@@ -1,14 +1,23 @@
 import PlaylistSkeleton from "@/components/skeletons/PlaylistSkeleton";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { useMusicStore } from "@/stores/useMusicStore";
 import { SignedIn } from "@clerk/clerk-react";
 import { ScrollArea } from "@radix-ui/react-scroll-area";
 import { HomeIcon, Library, MessageCircle } from "lucide-react";
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const LeftSidebar = () => {
-  const isLoading = true;
+  const {songs, albums, fetchAlbums, isLoading} = useMusicStore()
+  // data fetching => using zustand
+
+  useEffect(() => {
+    fetchAlbums()
+  }, [fetchAlbums])
+
+  console.log({albums})
+
   return (
     <div className="h-full flex flex-col gap-2">
       {/* Navigation menu */}
@@ -59,7 +68,10 @@ const LeftSidebar = () => {
             {isLoading ? (
               <PlaylistSkeleton />
             ) : (
-              "some music"
+              albums.map((album) => (
+                <Link to={`/albums/${album._id}`}>
+                </Link>
+              ))
             )}
           </div>
         </ScrollArea>
