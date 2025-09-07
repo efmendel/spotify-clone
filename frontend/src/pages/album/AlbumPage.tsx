@@ -5,6 +5,12 @@ import { Clock, Play } from "lucide-react";
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 
+const formatDuration = (seconds: number) => {
+  const minutes = Math.floor(seconds / 60);
+  const remainingSeconds = seconds % 60;
+  return `${minutes}:${remainingSeconds.toString().padStart(2, "0")}`
+}
+
 const AlbumPage = () => {
   const { albumID } = useParams();
 
@@ -51,6 +57,7 @@ const AlbumPage = () => {
                 </div>
               </div>
             </div>
+
             {/* Play button */}
             <div className="px-6 pb-4 flex items-center gap-6">
               <Button
@@ -78,7 +85,9 @@ const AlbumPage = () => {
                   {currentAlbum?.songs.map((song, index) => (
                     <div
                       key={song._id}
-                      className="grid grid-cols-[16px_4fr_2fr_1fr gap-4 px-4 py-2 text-sm text-zinc-400 hover:bg:white/5 rounded-md group cursor-pointer"
+                      className={
+                        "grid grid-cols-[16px_4fr_2fr_1fr] gap-4 px-4 py-2 text-sm text-zinc-400 hover:bg:white/5 rounded-md group cursor-pointer"
+                      }
                     >
                       <div className="flex items-center justify-center">
                         <span className="group-hover:hidden">{index + 1}</span>
@@ -98,9 +107,11 @@ const AlbumPage = () => {
                           </div>
                           <div>{song.artist}</div>
                         </div>
-
-
                       </div>
+                      <div className="flex items-center">
+                        {song.createdAt.split("T")[0]}
+                      </div>
+                      <div className="flex items-center">{formatDuration(song.duration)}</div>
                     </div>
                   ))}
                 </div>
