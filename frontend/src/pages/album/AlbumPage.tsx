@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { useMusicStore } from "@/stores/useMusicStore";
-import { ScrollArea } from "@radix-ui/react-scroll-area";
 import { Clock, Play } from "lucide-react";
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
@@ -26,7 +26,7 @@ const AlbumPage = () => {
   if (isLoading) return null;
   return (
     <div className="h-full">
-      <ScrollArea className="h-full">
+      <ScrollArea className="h-full rounded-md">
         {/* Main content */}
         <div className="relative min-h-full">
           {/* Background Gradient */}
