@@ -1,6 +1,5 @@
 import { axiosInstance } from "@/lib/axios";
 import type { Album, Song, Stats } from "@/types";
-import axios from "axios";
 import toast from "react-hot-toast";
 import { create } from "zustand";
 

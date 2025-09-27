@@ -3,10 +3,10 @@ import { ScrollArea } from '@/components/ui/scroll-area'
 import { useChatStore } from '@/stores/useChatStore.ts'
 import { useUser } from '@clerk/clerk-react'
 import { HeadphonesIcon, Music, Users } from 'lucide-react'
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 
 const FriendsActivity = () => {
-  const { users, isLoading, error, fetchUsers} = useChatStore()
+  const { users, fetchUsers} = useChatStore()
   const {user} = useUser();
 
   useEffect(() => {

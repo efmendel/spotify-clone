@@ -1,5 +1,5 @@
 import { usePlayerStore } from '@/stores/usePlayerStore';
-import React, { useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 
 // holds logic for three useeffects that handle play/pause functionality, song ending functionality, and song changing funcitonality
 const AudioPlayer = () => {
