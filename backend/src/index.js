@@ -23,7 +23,7 @@ app.use(
   cors({
     origin:
       process.env.NODE_ENV === "production"
-        ? ["https://spotify-clone-neon-gamma-99.vercel.app/"] // ✅ Your actual Vercel URL
+        ? ["https://spotify-clone-neon-gamma-99.vercel.app"] // ✅ Your actual Vercel URL
         : "http://localhost:5173",
     credentials: true,
   })
